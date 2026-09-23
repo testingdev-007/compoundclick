@@ -45,11 +45,11 @@ The participant website has an **Open Scratch** button in the hero (linked to `h
 |---|---|---|---|
 | 0:00–0:03 | 3 min | Welcome & framing | Why this exercise, why it maps to real tech/finance careers |
 | 0:03–0:07 | 4 min | Meet Scratch | Live demo tour: stage, sprite list, block palette, scripts area, green flag |
-| 0:07–0:10 | 3 min | Step 1 — Clear the stage | Delete the cat, add a Coin sprite, pick a backdrop |
-| 0:10–0:14 | 4 min | Step 2 & 3 — Give it a memory | Create the `Savings` variable, build the reset script, test with the green flag |
-| 0:14–0:21 | 7 min | Step 4 — Make it respond | The main build: click → add money → sound → pulse animation. This is where most support is needed |
-| 0:21–0:25 | 4 min | Step 5 — Make it yours | Personalise backdrop, costume, click amount |
-| 0:25–0:28 | 3 min | Step 6 — Stretch goal (flexible) | Milestone message when savings pass 100. **This is your buffer** — skip or shorten if the room is behind |
+| 0:07–0:10 | 3 min | Step 1 — Clear the stage | Delete the cat, add the Crystal sprite, pick a backdrop |
+| 0:10–0:15 | 5 min | Step 2 & 3 — Give it a memory | Create the `Savings` variable, build the green-flag reset script, add a dedicated key-press reset, test both |
+| 0:15–0:22 | 7 min | Step 4 — Make it respond | The main build: click → add money → sound → pulse animation. This is where most support is needed |
+| 0:22–0:26 | 4 min | Step 5 — Make it yours | Personalise backdrop, costume, click amount |
+| 0:26–0:28 | 2 min | Step 6 — Stretch goal (flexible) | Milestone message when savings pass 100. **This is your buffer** — skip or shorten if the room is behind |
 | 0:28–0:30 | 2 min | Wrap-up | Career connection, what to try next, close |
 
 Step 6 is deliberately the release valve: if the room needed longer on Step 4 (it usually does), spend the time there instead and treat the wrap-up conversation as covering the milestone idea verbally rather than building it.
@@ -68,7 +68,7 @@ Address the room directly: most people here have never written a line of code, a
 ### 0:03–0:07 — Meet Scratch
 Project your own screen. Point out, briefly:
 - **Stage** (top left) — where the programme runs
-- **Sprite list** (bottom left) — the "characters" or objects in the programme
+- **Sprite list** (bottom right, below the stage) — the "characters" or objects in the programme
 - **Block palette** (middle) — the vocabulary; colour-coded by category
 - **Scripts area** (right) — where you snap blocks together like puzzle pieces
 - **Green flag / red stop** (top right) — run and stop the programme
@@ -76,20 +76,24 @@ Project your own screen. Point out, briefly:
 Don't dwell — this is orientation, not a lecture. They'll learn the interface by using it in the next steps.
 
 ### 0:07–0:10 — Step 1: Clear the stage
-Walk the room through deleting the cat sprite and adding a coin/gem sprite from the library (search "coin" — the library's exact names shift between updates, so treat it as "closest match" rather than one specific sprite), then picking any backdrop. This is a good moment to circulate and check everyone's laptop actually opened Scratch correctly before the real building starts.
+Walk the room through deleting the cat sprite and adding the **Crystal** sprite from the library (the "Choose a Sprite" button sits below the stage, on the right of the screen — search "crystal" if it isn't visible straight away), then picking any backdrop. This is a good moment to circulate and check everyone's laptop actually opened Scratch correctly before the real building starts.
 
-### 0:10–0:14 — Steps 2–3: Give it a memory
-Creating the variable is the first slightly fiddly bit (Variables category → "Make a Variable"). Expect a few people to need a hand finding the button. Once the `set Savings to 0` script is built, get everyone to click the green flag together — a small synchronised "does it work" moment builds confidence before the harder step.
+### 0:10–0:15 — Steps 2–3: Give it a memory
+Creating the variable is the first slightly fiddly bit (Variables category → "Make a Variable"). Expect a few people to need a hand finding the button.
 
-### 0:14–0:21 — Step 4: Make it respond (the main build)
+There are two reset scripts to build here, not one: the green-flag reset from before, plus a dedicated `when key r pressed` reset. Flag why explicitly — the green flag is a shared button that also restarts everything else in the programme, so a reset that's just a reset (and nothing else) is worth having on its own trigger. Once both are built, get everyone to test both together — click the green flag, then press R — a small synchronised "does it work" moment builds confidence before the harder step.
+
+### 0:15–0:22 — Step 4: Make it respond (the main build)
 This is the longest block of time for a reason — it's the step with the most new concepts (event block, change vs. set, sound, two "change size" blocks for the pulse). Let people work at their own pace; this is where you and any co-facilitators should be circulating most.
+
+Expect someone to ask why the `wait 0.1 seconds` block is there between the two size changes. Good question, worth having the answer ready: without it, the grow and shrink happen back to back so fast that Scratch never actually renders the bigger size on screen — the pulse would be invisible. The tiny pause is what makes the animation something the eye can actually catch.
 
 If someone finishes early, that's what Step 6 is for — point them ahead rather than having them wait.
 
-### 0:21–0:25 — Step 5: Personalise
+### 0:22–0:26 — Step 5: Personalise
 Low-pressure and mostly self-directed: change the backdrop, swap the costume, change the click amount from 10 to something else. This step exists partly for pacing (it absorbs variance in how fast people finished Step 4) and partly because ownership of the output matters — "my programme," not "the programme."
 
-### 0:25–0:28 — Step 6: Stretch goal / buffer
+### 0:26–0:28 — Step 6: Stretch goal / buffer
 Only introduce this if the room is broadly on schedule. If you're behind, skip straight to wrap-up — better to finish with everyone confident in a working Step 4 build than rushed and confused by Step 6.
 
 ### 0:28–0:30 — Wrap-up
@@ -105,11 +109,12 @@ Point to where they can go next (see Appendix C).
 
 | Problem | Fix |
 |---|---|
-| Accidentally deleted the wrong sprite | Right-click stage → nothing to undo in Scratch easily; just re-add the Coin sprite from the library, no harm done |
+| Accidentally deleted the wrong sprite | Right-click stage → nothing to undo in Scratch easily; just re-add the Crystal sprite from the library, no harm done |
 | Can't find "Make a Variable" | It's a button inside the **Variables** category in the block palette, above the variable blocks themselves |
-| Clicking the coin does nothing | Almost always the "when this sprite clicked" hat block isn't at the top of the stack, or blocks aren't snapped together — check for a gap |
+| Clicking the crystal does nothing | Almost always the "when this sprite clicked" hat block isn't at the top of the stack, or blocks aren't snapped together — check for a gap |
 | No sound plays | Check system/laptop volume first; then check the sprite has a sound assigned in the Sounds tab |
 | Variable not visible on stage | The checkbox next to the variable name in the palette needs to be ticked |
+| Pressing R doesn't reset it | The key-press block defaults to "space" — check its dropdown was actually changed to "r" |
 | Participant is ahead of the group | Point them to Step 6 or suggest they help a neighbour — both are fine outcomes |
 | Participant is behind | Don't stop the room for one person — flag a helper (you or a co-facilitator) to sit with them while the group moves on |
 
@@ -128,7 +133,7 @@ when this sprite clicked
 change Savings by 10
 ```
 
-That's it — two blocks. It's still a real, working, testable programme: click the coin, watch the number go up. Say this explicitly: *"That's a complete build. The sound and the wobble are polish, not the point — you've already written the part that matters."* People who came in anxious about "not being technical" need to hear that a small working thing counts as a win, not a shortfall. They can add the sound and animation back in during Step 5's personalise time if they want to, with no pressure to.
+That's it — two blocks. It's still a real, working, testable programme: click the crystal, watch the number go up. Say this explicitly: *"That's a complete build. The sound and the wobble are polish, not the point — you've already written the part that matters."* People who came in anxious about "not being technical" need to hear that a small working thing counts as a win, not a shortfall. They can add the sound and animation back in during Step 5's personalise time if they want to, with no pressure to.
 
 **3. Narrate the fix, don't just make it.** When you sit with someone, resist doing the click-and-drag for them. Point at the gap between two blocks, or name the block they're missing ("you need one more block from the Sound category") and let them place it. The 30-minute win is "I did this," not "it got done."
 
@@ -153,12 +158,13 @@ If someone races through all four, the honest answer is "you've now covered vari
 
 ## Appendix A: printable step list (backup handout)
 
-1. Delete the cat. Search the sprite library for "coin" and add whichever coin/gem sprite appears. Pick a backdrop.
+1. Delete the cat. Click **Choose a Sprite** (below the stage, on the right) and add the **Crystal** sprite. Pick a backdrop.
 2. Variables → **Make a Variable** → name it `Savings`.
 3. Drag: `when green flag clicked` + `set Savings to 0`. Click the green flag to test.
-4. Drag: `when this sprite clicked` + `change Savings by 10` + `play sound` (pick whatever sound is already on your sprite, in the Sounds tab — or add any short one from the sound library) + `change size by 10` + `wait 0.1 seconds` + `change size by -10`. Click the coin to test.
-5. Personalise: change the backdrop, the costume, or the click amount.
-6. *(Stretch)* Add: `if Savings > 100 then` → `say "You just built your first fintech feature!"`.
+4. Drag a second reset: `when key r pressed` + `set Savings to 0`. Press R to test.
+5. Drag: `when this sprite clicked` + `change Savings by 10` + `play sound` (pick whatever sound is already on your sprite, in the Sounds tab — or add any short one from the sound library) + `change size by 10` + `wait 0.1 seconds` + `change size by -10`. Click the crystal to test.
+6. Personalise: change the backdrop, the costume, or the click amount.
+7. *(Stretch)* Add: `if Savings > 100 then` → `say "You just built your first fintech feature!"`.
 
 ## Appendix B: the "why this maps to a career" cheat sheet
 

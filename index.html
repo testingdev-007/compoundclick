@@ -24,7 +24,7 @@
     --c-variables: #E2733A;
     --c-looks: #8D7CDB;
     --c-sound: #C56AAE;
-    --c-control: #4FA88F;
+    --c-control: #D9922E;
 
     --serif: 'Fraunces', Georgia, serif;
     --sans: 'IBM Plex Sans', -apple-system, Segoe UI, sans-serif;
@@ -253,7 +253,7 @@
   .b-variables{ background:var(--c-variables); color:#2A1000;}
   .b-looks{ background:var(--c-looks); color:#180F33;}
   .b-sound{ background:var(--c-sound); color:#2A0E20;}
-  .b-control{ background:var(--c-control); color:#0B2620;}
+  .b-control{ background:var(--c-control); color:#2A1600;}
 
   .try-it{
     margin-top:22px;
@@ -333,11 +333,11 @@
     max-width:420px;
     text-align:center;
   }
-  .preview-frame .coin{
-    width:58px; height:58px; border-radius:50%;
-    background: radial-gradient(circle at 35% 30%, #F2D27A, var(--gold) 70%);
+  .preview-frame .crystal{
+    width:46px; height:46px;
     margin:0 auto 14px auto;
-    box-shadow: 0 0 0 3px rgba(217,169,59,0.18);
+    background: linear-gradient(135deg, #F2D27A, var(--gold) 55%, var(--gold-dim));
+    clip-path: polygon(50% 0%, 90% 30%, 78% 100%, 22% 100%, 10% 30%);
   }
   .preview-frame .figure{ font-family:var(--mono); font-size:30px; color:#FBFAF7; }
   .preview-frame .cap{ font-family:var(--mono); font-size:11px; color:var(--paper-dim); margin-top:6px;}
@@ -452,7 +452,7 @@
       </div>
 
       <div class="try-it">
-        <strong>Do this:</strong> Right-click the cat sprite in the sprite list and delete it. Click the sprite icon (bottom left) to open the library, and search "coin" — pick whichever coin or gem sprite comes up. Then click the backdrop icon and choose any backdrop you like.
+        <strong>Do this:</strong> Right-click the cat sprite in the sprite list and delete it. Click <strong>Choose a Sprite</strong> — it's below the stage, on the right of the screen — and add the <strong>Crystal</strong> sprite. Then choose any backdrop you like from the button next to it.
       </div>
 
       <label class="mark-done"><input type="checkbox" data-mark="1"> Mark this step done</label>
@@ -487,10 +487,10 @@
     <section class="step" id="step-3">
       <div class="step-head">
         <span class="step-num">03</span>
-        <h2>Start at zero</h2>
-        <span class="step-time">~2 min</span>
+        <h2>Start at zero — and add an explicit reset</h2>
+        <span class="step-time">~3 min</span>
       </div>
-      <p class="step-intro">Whenever the programme runs, it should reset — nobody wants last time's total still sitting there.</p>
+      <p class="step-intro">Whenever the programme runs, it should reset — nobody wants last time's total still sitting there. We'll also give it a dedicated reset you can trigger any time, not just when the programme first starts.</p>
 
       <div class="callout">
         <span class="tag">WHY IT MATTERS</span>
@@ -499,7 +499,7 @@
 
       <div class="stack">
         <div class="block-list">
-          <div class="block hat b-events">when 🏳 clicked</div>
+          <div class="block hat b-events">when green flag clicked</div>
           <div class="block b-variables">set Savings to <strong>&nbsp;0</strong></div>
         </div>
       </div>
@@ -508,11 +508,25 @@
         <strong>Do this:</strong> Drag <strong>when green flag clicked</strong> into the scripts area. Snap <strong>set Savings to 0</strong> underneath it. Click the green flag (top right) to test — your Savings should show 0.
       </div>
 
+      <p style="font-size:13.5px; color:var(--paper-dim); max-width:64ch; margin-top:20px;">The green flag resets it too, but it's a shared button that also (re)starts everything else in the programme. It's worth having a reset that's just a reset — and does nothing else:</p>
+
+      <div class="stack">
+        <div class="block-list">
+          <div class="block hat b-events">when key <strong>&nbsp;r&nbsp;</strong> pressed</div>
+          <div class="block b-variables">set Savings to <strong>&nbsp;0</strong></div>
+        </div>
+      </div>
+
+      <div class="try-it">
+        <strong>Do this:</strong> From <strong>Events</strong>, drag a second <strong>when key [space] pressed</strong> block into the scripts area, and change "space" to "r" using its dropdown. Snap another <strong>set Savings to 0</strong> underneath it (drag a fresh one from Variables — don't try to reuse the one from the first script). Press the <strong>R</strong> key on your keyboard to test.
+      </div>
+
       <details class="stuck">
         <summary>Stuck? Open this</summary>
         <div class="stuck-body">
-          <p>Most likely the two blocks aren't actually snapped together — there's a small gap. Drag the <code>set Savings to 0</code> block so its top edge touches the bottom of the hat block until you see it click into place.</p>
+          <p>Most likely the two blocks in either script aren't actually snapped together — there's a small gap. Drag the <code>set Savings to 0</code> block so its top edge touches the bottom of the hat block above it until you see it click into place.</p>
           <p>If the variable checkbox on the stage isn't ticked yet, you won't see the number at all even though it's working — go back to the Variables category and tick the box next to <code>Savings</code>.</p>
+          <p>If pressing R does nothing, check the dropdown on the key-press block actually says "r" and not still "space".</p>
         </div>
       </details>
 
@@ -525,7 +539,7 @@
         <h2>Make it respond</h2>
         <span class="step-time">~7 min</span>
       </div>
-      <p class="step-intro">This is the main build. When you click the coin, three things should happen: your total goes up, a sound plays, and the coin gives a little pulse. Three lines of feedback for one click — that's UX design, and you're about to write it.</p>
+      <p class="step-intro">This is the main build. When you click the crystal, three things should happen: your total goes up, a sound plays, and the crystal gives a little pulse. Three lines of feedback for one click — that's UX design, and you're about to write it.</p>
 
       <div class="callout">
         <span class="tag">WHY IT MATTERS</span>
@@ -542,9 +556,10 @@
           <div class="block b-looks">change size by <strong>&nbsp;-10</strong></div>
         </div>
       </div>
+      <p style="font-size:13px; color:var(--paper-dim); max-width:60ch; margin-top:-8px;">Why the wait? Without it, the grow and shrink happen back to back so fast that Scratch never actually shows the bigger size — the pulse would be invisible. The 0.1-second pause is what makes the animation something you can actually see.</p>
 
       <div class="try-it">
-        <strong>Do this:</strong> Build the stack above on your coin sprite. For the sound block, check its <strong>Sounds</strong> tab first — most library sprites already come with one built in — and pick that, or add any short one from the sound library if it's empty. Six blocks, snapped in order. Click the coin on the stage to test — watch Savings climb, listen for the sound, and see the little pulse. If nothing happens, check every block is actually snapped together with no gaps.
+        <strong>Do this:</strong> Build the stack above on your crystal sprite. For the sound block, check its <strong>Sounds</strong> tab first — most library sprites already come with one built in — and pick that, or add any short one from the sound library if it's empty. Six blocks, snapped in order. Click the crystal on the stage to test — watch Savings climb, listen for the sound, and see the little pulse. If nothing happens, check every block is actually snapped together with no gaps.
       </div>
 
       <details class="stuck">
@@ -553,7 +568,7 @@
           <p>This is the fiddliest step in the whole session — everyone slows down here, so don't worry if it's taking longer than Step 3 did.</p>
           <p>If you're running short on time or patience, it's completely fine to build a smaller version first and come back to the sound and pulse later:</p>
           <p><code>when this sprite clicked</code><br><code>change Savings by 10</code></p>
-          <p>That's a real, complete, working programme on its own — click the coin, watch the number go up. Add the sound and pulse back in once that's working, or during Step 5.</p>
+          <p>That's a real, complete, working programme on its own — click the crystal, watch the number go up. Add the sound and pulse back in once that's working, or during Step 5.</p>
         </div>
       </details>
 
@@ -574,11 +589,11 @@
       </div>
 
       <div class="try-it">
-        <strong>Try any of these:</strong> Change the backdrop. Give the coin a different costume. Change <strong>10</strong> in "change Savings by 10" to a different number. Rename the variable display, or add a second sprite that reacts differently when clicked.
+        <strong>Try any of these:</strong> Change the backdrop. Give the crystal a different costume. Change <strong>10</strong> in "change Savings by 10" to a different number. Rename the variable display, or add a second sprite that reacts differently when clicked.
       </div>
 
       <div class="preview-frame">
-        <div class="coin"></div>
+        <div class="crystal"></div>
         <div class="figure">Savings: 140</div>
         <div class="cap">what your stage should look and feel like by now</div>
       </div>
@@ -681,10 +696,10 @@
     { label: "Welcome & tour", start: 0, end: 7 },
     { label: "Step 1 — Clear the stage", start: 7, end: 10 },
     { label: "Step 2 — Give it a memory", start: 10, end: 12 },
-    { label: "Step 3 — Start at zero", start: 12, end: 14 },
-    { label: "Step 4 — Make it respond", start: 14, end: 21 },
-    { label: "Step 5 — Make it yours", start: 21, end: 25 },
-    { label: "Step 6 — Stretch goal", start: 25, end: 28 },
+    { label: "Step 3 — Start at zero (+ reset)", start: 12, end: 15 },
+    { label: "Step 4 — Make it respond", start: 15, end: 22 },
+    { label: "Step 5 — Make it yours", start: 22, end: 26 },
+    { label: "Step 6 — Stretch goal", start: 26, end: 28 },
     { label: "Wrap-up", start: 28, end: 999 }
   ];
 
